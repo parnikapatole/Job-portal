@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JobSphere AI</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+/* =========================
+GLOBAL
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#050816;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* =========================
+3D BACKGROUND
+========================= */
+
+.background{
+    position:fixed;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    z-index:-1;
+}
+
+.circle{
+    position:absolute;
+    border-radius:50%;
+    background:rgba(0,255,255,0.08);
+    animation:float 12s linear infinite;
+}
+
+.circle:nth-child(1){
+    width:300px;
+    height:300px;
+    top:10%;
+    left:10%;
+}
+
+.circle:nth-child(2){
+    width:500px;
+    height:500px;
+    right:-100px;
+    top:40%;
+}
+
+.circle:nth-child(3){
+    width:250px;
+    height:250px;
+    bottom:-50px;
+    left:40%;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0px) rotate(0deg);
+    }
+
+    100%{
+        transform:translateY(-60px) rotate(360deg);
+    }
+}
+
+/* =========================
+NAVBAR
+========================= */
+
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    backdrop-filter:blur(15px);
+    background:rgba(255,255,255,0.05);
+    z-index:1000;
+}
+
+.logo{
+    font-size:35px;
+    font-weight:800;
+    background:linear-gradient(45deg,#00f7ff,#8a2be2);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+nav ul{
+    display:flex;
+    gap:30px;
+    list-style:none;
+}
+
+nav ul li{
+    cursor:pointer;
+    transition:0.3s;
+    font-weight:500;
+}
+
+nav ul li:hover{
+    color:#00f7ff;
+}
+
+/* =========================
+HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    padding:0 20px;
+}
+
+.hero h1{
+    font-size:85px;
+    max-width:1000px;
+    line-height:1.1;
+    font-weight:800;
+    background:linear-gradient(45deg,#00f7ff,#ffffff,#8a2be2);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    margin-top:25px;
+    max-width:700px;
+    font-size:20px;
+    color:#cbd5e1;
+}
+
+.hero button{
+    margin-top:35px;
+    padding:16px 40px;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(45deg,#00f7ff,#8a2be2);
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.4s;
+}
+
+.hero button:hover{
+    transform:translateY(-5px) scale(1.05);
+}
+
+/* =========================
+SECTION
+========================= */
+
+.section{
+    padding:100px 8%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:55px;
+    margin-bottom:50px;
+}
+
+.section-title span{
+    color:#00f7ff;
+}
+
+/* =========================
+AUTH
+========================= */
+
+.auth-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Form Box */
+
+.form-box{
+    width:450px;
+    background:rgba(255,255,255,0.06);
+    padding:45px;
+    border-radius:30px;
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,0.08);
+    transition:0.4s;
+    position:relative;
+    overflow:hidden;
+}
+
+.form-box:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 40px rgba(0,255,255,0.15);
+}
+
+.form-icon{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+    margin-bottom:20px;
+    font-size:30px;
+    background:linear-gradient(45deg,#00f7ff,#8a2be2);
+}
+
+.form-box h2{
+    text-align:center;
+    margin-bottom:10px;
+}
+
+.form-subtitle{
+    text-align:center;
+    color:#cbd5e1;
+    margin-bottom:30px;
+}
+
+/* Inputs */
+
+.form-box input,
+.form-box select{
+    width:100%;
+    padding:16px;
+    margin:14px 0;
+    border:none;
+    border-radius:15px;
+    background:rgba(255,255,255,0.08);
+    color:white;
+    outline:none;
+    font-size:15px;
+}
+
+.form-box input::placeholder{
+    color:#cbd5e1;
+}
+
+.form-box button{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:15px;
+    background:linear-gradient(45deg,#00f7ff,#8a2be2);
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
+    margin-top:15px;
+}
+
+/* =========================
+SEARCH
+========================= */
+
+.search-box{
+    max-width:700px;
+    margin:0 auto 50px;
+    display:flex;
+    gap:15px;
+}
+
+.search-box input{
+    flex:1;
+    padding:16px;
+    border:none;
+    border-radius:50px;
+    background:rgba(255,255,255,0.08);
+    color:white;
+    outline:none;
+}
+
+.search-box button{
+    padding:16px 30px;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(45deg,#00f7ff,#8a2be2);
+    color:white;
+    cursor:pointer;
+}
+
+/* =========================
+JOBS
+========================= */
+
+.jobs-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.job-card{
+    background:rgba(255,255,255,0.05);
+    padding:30px;
+    border-radius:25px;
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.08);
+    transition:0.4s;
+}
+
+.job-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 40px rgba(0,255,255,0.15);
+}
+
+.job-card h3{
+    font-size:28px;
+}
+
+.job-card p{
+    margin-top:12px;
+    color:#cbd5e1;
+}
+
+.job-card button{
+    width:100%;
+    margin-top:25px;
+    padding:14px;
+    border:none;
+    border-radius:15px;
+    background:linear-gradient(45deg,#00f7ff,#8a2be2);
+    color:white;
+    cursor:pointer;
+    font-weight:600;
+}
+
+/* =========================
+DASHBOARD
+========================= */
+
+.dashboard-card{
+    background:rgba(255,255,255,0.05);
+    padding:30px;
+    border-radius:25px;
+    margin-bottom:25px;
+}
+
+/* =========================
+LOGOUT
+========================= */
+
+.logout-section{
+    text-align:center;
+    margin-top:50px;
+}
+
+.logout-section button{
+    padding:15px 40px;
+    border:none;
+    border-radius:50px;
+    background:red;
+    color:white;
+    cursor:pointer;
+    font-size:18px;
+}
+
+/* =========================
+FOOTER
+========================= */
+
+footer{
+    text-align:center;
+    padding:50px;
+    background:black;
+    margin-top:100px;
+}
+
+.hidden{
+    display:none;
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+.hero h1{
+    font-size:50px;
+}
+
+nav{
+    flex-direction:column;
+    gap:20px;
+}
+
+.form-box{
+    width:100%;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Background -->
+
+<div class="background">
+
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+
+</div>
+
+<!-- Navbar -->
+
+<nav>
+
+<div class="logo">
+JobSphere AI
+</div>
+
+<ul>
+
+<li onclick="showSection('home')">
+Home
+</li>
+
+<li onclick="showSection('jobs')">
+Jobs
+</li>
+
+<li id="authNav"
+onclick="showSection('auth')">
+Signup
+</li>
+
+<li onclick="showSection('dashboard')">
+Dashboard
+</li>
+
+</ul>
+
+</nav>
+
+<!-- Hero -->
+
+<section id="home">
+
+<div class="hero">
+
+<h1>
+The Future Of Smart Hiring
+</h1>
+
+<p>
+Explore AI-powered job opportunities and connect with top companies instantly.
+</p>
+
+<button onclick="showSection('jobs')">
+Explore Jobs
+</button>
+
+</div>
+
+</section>
+
+<!-- Authentication -->
+
+<section id="auth"
+class="hidden section">
+
+<h2 class="section-title">
+Create <span>Account</span>
+</h2>
+
+<div class="auth-container">
+
+<!-- Signup -->
+
+<div class="form-box"
+id="signupBox">
+
+<div class="form-icon">
+<i class="fa-solid fa-user-plus"></i>
+</div>
+
+<h2>Create Account</h2>
+
+<p class="form-subtitle">
+Join the future of hiring
+</p>
+
+<input type="text"
+id="signupName"
+placeholder="Enter Full Name">
+
+<input type="email"
+id="signupEmail"
+placeholder="Enter Email Address">
+
+<input type="password"
+id="signupPassword"
+placeholder="Create Password">
+
+<select id="signupRole">
+
+<option value="">
+Select Role
+</option>
+
+<option value="candidate">
+Candidate
+</option>
+
+<option value="employer">
+Employer
+</option>
+
+</select>
+
+<button onclick="signup()">
+Create Account
+</button>
+
+</div>
+
+<!-- Login -->
+
+<div class="form-box hidden"
+id="loginBox">
+
+<div class="form-icon">
+<i class="fa-solid fa-right-to-bracket"></i>
+</div>
+
+<h2>Welcome Back</h2>
+
+<p class="form-subtitle">
+Login to continue
+</p>
+
+<input type="email"
+id="loginEmail"
+placeholder="Enter Email Address">
+
+<input type="password"
+id="loginPassword"
+placeholder="Enter Password">
+
+<button onclick="login()">
+Login Now
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Jobs -->
+
+<section id="jobs"
+class="hidden section">
+
+<h2 class="section-title">
+Featured <span>Jobs</span>
+</h2>
+
+<div class="search-box">
+
+<input type="text"
+id="searchInput"
+placeholder="Search jobs...">
+
+<button onclick="searchJobs()">
+Search
+</button>
+
+</div>
+
+<div class="jobs-container"
+id="jobsContainer">
+</div>
+
+</section>
+
+<!-- Dashboard -->
+
+<section id="dashboard"
+class="hidden section">
+
+<h2 class="section-title">
+Your <span>Dashboard</span>
+</h2>
+
+<div id="dashboardContent"></div>
+
+<div class="logout-section">
+
+<button onclick="logout()">
+Logout
+</button>
+
+</div>
+
+</section>
+
+<!-- Footer -->
+
+<footer>
+
+<h2>
+JobSphere AI
+</h2>
+
+<p style="margin-top:10px;color:#94a3b8;">
+AI Powered Recruitment Platform
+</p>
+
+</footer>
+
+<script>
+
+/* =========================
+DEFAULT JOBS
+========================= */
+
+if(!localStorage.getItem("jobs")){
+
+    const defaultJobs = [
+
+        {
+            title:"Frontend Developer",
+            company:"Google",
+            location:"Mumbai",
+            salary:"10 LPA",
+            applicants:[]
+        },
+
+        {
+            title:"Backend Developer",
+            company:"Microsoft",
+            location:"Pune",
+            salary:"12 LPA",
+            applicants:[]
+        },
+
+        {
+            title:"UI UX Designer",
+            company:"Amazon",
+            location:"Bangalore",
+            salary:"9 LPA",
+            applicants:[]
+        },
+
+        {
+            title:"Data Scientist",
+            company:"Netflix",
+            location:"Hyderabad",
+            salary:"15 LPA",
+            applicants:[]
+        },
+
+        {
+            title:"Cyber Security Analyst",
+            company:"IBM",
+            location:"Delhi",
+            salary:"14 LPA",
+            applicants:[]
+        }
+
+    ];
+
+    localStorage.setItem(
+        "jobs",
+        JSON.stringify(defaultJobs)
+    );
+}
+
+/* =========================
+SHOW SECTION
+========================= */
+
+function showSection(id){
+
+document.querySelectorAll("section")
+.forEach(sec=>sec.classList.add("hidden"));
+
+document.getElementById(id)
+.classList.remove("hidden");
+
+if(id==="jobs"){
+displayJobs();
+}
+
+if(id==="dashboard"){
+loadDashboard();
+}
+
+}
+
+/* =========================
+SIGNUP
+========================= */
+
+function signup(){
+
+const name =
+document.getElementById("signupName").value;
+
+const email =
+document.getElementById("signupEmail").value;
+
+const password =
+document.getElementById("signupPassword").value;
+
+const role =
+document.getElementById("signupRole").value;
+
+if(name==="" || email==="" || password==="" || role===""){
+
+alert("Please Fill All Fields");
+return;
+
+}
+
+const user = {
+name,
+email,
+password,
+role
+};
+
+localStorage.setItem(
+email,
+JSON.stringify(user)
+);
+
+alert("Signup Successful! Please Login");
+
+/* Hide Signup */
+
+document.getElementById("signupBox")
+.classList.add("hidden");
+
+/* Show Login */
+
+document.getElementById("loginBox")
+.classList.remove("hidden");
+
+/* Change Title */
+
+document.querySelector(".section-title")
+.innerHTML=`Login <span>Account</span>`;
+
+/* Autofill Email */
+
+document.getElementById("loginEmail")
+.value=email;
+
+}
+
+/* =========================
+LOGIN
+========================= */
+
+function login(){
+
+const email =
+document.getElementById("loginEmail").value;
+
+const password =
+document.getElementById("loginPassword").value;
+
+const user =
+JSON.parse(localStorage.getItem(email));
+
+if(user && user.password===password){
+
+localStorage.setItem(
+"loggedInUser",
+JSON.stringify(user)
+);
+
+alert("Login Successful");
+
+/* Hide Signup Nav */
+
+document.getElementById("authNav")
+.style.display="none";
+
+/* Open Dashboard */
+
+showSection("dashboard");
+
+}else{
+
+alert("Invalid Credentials");
+
+}
+
+}
+
+/* =========================
+LOGOUT
+========================= */
+
+function logout(){
+
+localStorage.removeItem("loggedInUser");
+
+/* Reset Auth */
+
+document.getElementById("signupBox")
+.classList.remove("hidden");
+
+document.getElementById("loginBox")
+.classList.add("hidden");
+
+document.querySelector(".section-title")
+.innerHTML=`Create <span>Account</span>`;
+
+/* Show Nav */
+
+document.getElementById("authNav")
+.style.display="block";
+
+alert("Logged Out");
+
+showSection("home");
+
+}
+
+/* =========================
+DISPLAY JOBS
+========================= */
+
+function displayJobs(filteredJobs=null){
+
+const jobs =
+filteredJobs ||
+JSON.parse(localStorage.getItem("jobs"));
+
+const container =
+document.getElementById("jobsContainer");
+
+container.innerHTML="";
+
+jobs.forEach((job,index)=>{
+
+container.innerHTML += `
+
+<div class="job-card">
+
+<h3>${job.title}</h3>
+
+<p>
+<i class="fa-solid fa-building"></i>
+${job.company}
+</p>
+
+<p>
+<i class="fa-solid fa-location-dot"></i>
+${job.location}
+</p>
+
+<p>
+<i class="fa-solid fa-money-bill"></i>
+${job.salary}
+</p>
+
+<button onclick="applyJob(${index})">
+Apply Now
+</button>
+
+</div>
+
+`;
+
+});
+
+}
+
+/* =========================
+SEARCH JOBS
+========================= */
+
+function searchJobs(){
+
+const search =
+document.getElementById("searchInput")
+.value.toLowerCase();
+
+const jobs =
+JSON.parse(localStorage.getItem("jobs"));
+
+const filtered =
+jobs.filter(job =>
+
+job.title.toLowerCase().includes(search)
+||
+job.company.toLowerCase().includes(search)
+
+);
+
+displayJobs(filtered);
+
+}
+
+/* =========================
+APPLY JOB
+========================= */
+
+function applyJob(index){
+
+const user =
+JSON.parse(localStorage.getItem("loggedInUser"));
+
+if(!user){
+
+alert("Please Login First");
+showSection("auth");
+return;
+
+}
+
+if(user.role!=="candidate"){
+
+alert("Only Candidates Can Apply");
+return;
+
+}
+
+let jobs =
+JSON.parse(localStorage.getItem("jobs"));
+
+jobs[index].applicants.push(user.name);
+
+localStorage.setItem(
+"jobs",
+JSON.stringify(jobs)
+);
+
+alert("Application Submitted Successfully");
+
+}
+
+/* =========================
+DASHBOARD
+========================= */
+
+function loadDashboard(){
+
+const user =
+JSON.parse(localStorage.getItem("loggedInUser"));
+
+const dashboard =
+document.getElementById("dashboardContent");
+
+if(!user){
+
+dashboard.innerHTML = `
+<div class="dashboard-card">
+<h2>Please Login First</h2>
+</div>
+`;
+
+return;
+
+}
+
+dashboard.innerHTML = `
+
+<div class="dashboard-card">
+
+<h2>
+Welcome ${user.name}
+</h2>
+
+<p style="margin-top:15px;">
+Role: ${user.role}
+</p>
+
+<p style="margin-top:15px;">
+Explore premium AI-powered jobs and opportunities.
+</p>
+
+</div>
+
+`;
+
+}
+
+/* =========================
+DEFAULT PAGE
+========================= */
+
+showSection("home");
+
+</script>
+
+</body>
+</html>
